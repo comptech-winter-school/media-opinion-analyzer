@@ -1,0 +1,5 @@
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# custom attributes of its containing folder
+.DS_Store
