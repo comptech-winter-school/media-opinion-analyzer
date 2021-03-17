@@ -1,10 +1,51 @@
 # media-opinion-analyzer
-Проект "Анализатор мнений в онлайн-медиа" на Зимней Школе CompTech 2021
+This project was born during CompTech2021 winter-school.
 
-Online social media уже плотно вошло в наш мир. По данным Фейсбук, человечество уделяет все больше и больше времени социальным сетям, аудитория социальных сетей растет. Интернет площадки часто становятся платформой для дебатов и обсуждений различных явлений и событий. 
+Online social media has firmly entered our lives. According to facebook humanity spending more time in social media and the audience of social media is growing. Network often become a platform for discussion of various phenomena and events.
 
-С другой стороны, социологи уже не первое десятилетие посвятили на разработку моделей трансформации мнений. Эти модели - математическое описание принципов и закономерностей, наблюдаемых в реальной среде. С помощью больших данных уже появляются исследования взаимодействия мнений в социальных сетях. Например, было экспериментально подтверждено наличие эхо комнат в Твиттере и Фейсбуке.
+On the other hand, sociologists have devoted more than a decade to the development of models for the transformation of opinions. These models are a mathematical description of the principles and patterns observed in a real environment. With the help of big data, research on the interaction of opinions on social media is already emerging. For example, the presence of echoes of rooms on Twitter and Facebook has been experimentally confirmed.
 
-Как мы знаем, математические модели работают с числами, а мнения выражаются текстом. Ученым необходимо идти на разные уловки, чтобы выявить мнения из данных в соц сетях. Показателем обычно используется количество лайков или self-reported данные (напр. “по шкале от 1 до 10 опишите насколько вы любите яой”).
+As we know, mathematical models work with numbers, and opinions are expressed by text. Scientists need to go for different tricks to elicit opinions from social media data. The metric is usually the number of likes or self-reported data (e.g. “on a scale of 1 to 10, describe how much you like yaoi”).
 
-В нашем проекте мы хотим помочь ученым и всему миру создать алгоритм для правдоподобной оценки мнений из текстовых комментариев. Изначальная идея использовать алгоритмы text embedding (напр. BERT) для отображения комментария в вектор, кластеризации и сравнения с опорными векторами (маяками). Тестировать подход будем на данных из платформы Reddit. Финальным продуктом школы будет готовый анализатор мнений в виде, например, веб сервиса.
+
+## Purpose
+
+The main purpose is to help scientists from all over the world to estimate and analyze social opinion from social-media comments. The idea is to use text embedding algorithms to vectorize comments which then we use for clustering, classification, dynamic analyzation and similarity comparison with reference text.
+The approach is tested on data from the Reddit platform.
+
+
+## Repository structure
+
+| File name              | Desctiption                     |
+| :-------------------- | :------------------------------------------------- |
+| preprocessing | preprocessing data downloaded from Reddit |
+| webapp | streamlit web_app |
+| sBert| testing sBert: vectorization, classification, cos_sim, clustering |
+| doc2vec | testing doc2vec: vectorization, classification, cos_sim |
+| USE| testing USE: vectorization, classification, cos_sim, clustering |
+| LanguageModel.ipynb | pipeline. Input: table with vectors of a chosen model. Output: cos_sim, opinion_dynamic, clusters, classification |
+
+
+## How to use
+
+There are 2 ways to check results:
+1. Use LanguageModel.ipynb. 
+   In "/content/drive/My Drive/weights/" tables in pickle format.
+   Columns: created_utc, author, body, embedding
+   
+2. Run streamlit app in webapp folder. 
+   - Install streamlit library 
+   - Set environmet. Libraries listed in requirements.txt
+   - Put three tables ("df_doc2vec", "df_sbert", "df_use") in pickle format to the same folder with my_app.py
+     Columns names: body, vec, who. 
+     In 'body' comments type string, in vec - embeddings, in who biden(1) or trump(0) type int.
+   - Run streamlit app: ```streamlit run my_app.py [-- script args]```
+     more info here https://docs.streamlit.io/en/stable/streamlit_configuration.html
+
+
+## Summary 
+Resulats of sBert, doc2vec, USE
+1. similarity to reference text: 'We should build the wall!'
+2. classification to the right party
+3. clusters
+4. dynamic
