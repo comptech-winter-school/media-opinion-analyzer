@@ -1,8 +1,9 @@
-# тестируем предобученную модель sBert
+# testing sBert on different tasks
 
-| Файл              | Описание                     |
+| File name              | Description                     |
 | :-------------------- | :------------------------------------------------- |
-| embedding.ipynb | отображение комментариев в вектор |
-| classifier.ipynb | классификация мнений лог регрессией |
-| cos_sim.ipynb | сравнение заданного предложения с разнымим группами и опорными векторами(маяком) |
-| clusters.ipynb | кластеризация и scatterplot |
+| embedding.ipynb | compute text embeddings |
+| classifier.ipynb | comments classification by party |
+| cos_sim.ipynb | comments and reference text comparison by cosine similarity |
+| clusters.ipynb | clustering |
+| SentenceBERT.ipynb | best method from each step above in one notebook <a href="https://colab.research.google.com/drive/1scGdPdq4bS1DFhphSRsL4GoHbfyMJ0gQ?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> |

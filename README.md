@@ -1,10 +1,37 @@
 # media-opinion-analyzer
-Проект "Анализатор мнений в онлайн-медиа" на Зимней Школе CompTech 2021
 
-Online social media уже плотно вошло в наш мир. По данным Фейсбук, человечество уделяет все больше и больше времени социальным сетям, аудитория социальных сетей растет. Интернет площадки часто становятся платформой для дебатов и обсуждений различных явлений и событий. 
+The main purpose is to help scientists from all over the world to estimate and analyze social opinion from social-media comments. The idea is to use text embedding algorithms to vectorize comments which then we can use for clustering, classification, dynamic analyzation and similarity comparison with reference text.
+The approach is tested on data from the Reddit platform.
 
-С другой стороны, социологи уже не первое десятилетие посвятили на разработку моделей трансформации мнений. Эти модели - математическое описание принципов и закономерностей, наблюдаемых в реальной среде. С помощью больших данных уже появляются исследования взаимодействия мнений в социальных сетях. Например, было экспериментально подтверждено наличие эхо комнат в Твиттере и Фейсбуке.
+<a href="https://colab.research.google.com/drive/1scGdPdq4bS1DFhphSRsL4GoHbfyMJ0gQ?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
-Как мы знаем, математические модели работают с числами, а мнения выражаются текстом. Ученым необходимо идти на разные уловки, чтобы выявить мнения из данных в соц сетях. Показателем обычно используется количество лайков или self-reported данные (напр. “по шкале от 1 до 10 опишите насколько вы любите яой”).
+## Repository structure
 
-В нашем проекте мы хотим помочь ученым и всему миру создать алгоритм для правдоподобной оценки мнений из текстовых комментариев. Изначальная идея использовать алгоритмы text embedding (напр. BERT) для отображения комментария в вектор, кластеризации и сравнения с опорными векторами (маяками). Тестировать подход будем на данных из платформы Reddit. Финальным продуктом школы будет готовый анализатор мнений в виде, например, веб сервиса.
+| Folder           | Description                     |
+| :-------------------- | :------------------------------------------------- |
+| preprocessing | preprocessing data downloaded from Reddit |
+| webapp | streamlit web_app |
+| sBert| testing sBert: vectorization, classification, cos_sim, clustering |
+| doc2vec | testing doc2vec: vectorization, classification, cos_sim |
+| USE| testing USE: vectorization, classification, cos_sim, clustering |
+| LanguageModel.ipynb | initial sBert pipeline |
+
+
+## How to use
+
+Run streamlit app in webapp folder. 
+- Install streamlit library 
+- Set environmet. Libraries listed in requirements.txt
+- Put three tables ("df_doc2vec", "df_sbert", "df_use") in pickle format to the same folder with my_app.py.        
+  Main columns names: body, vec, who.         
+  In 'body' column comments with type string, in vec - embeddings, in who biden(1) or trump(0) type int.
+- Run streamlit app: ```streamlit run my_app.py```              
+  more info here https://docs.streamlit.io/en/stable/streamlit_configuration.html
+
+
+## Summary 
+Results for sBert, doc2vec, USE
+1. similarity to reference text: 'We should build the wall!'
+2. classification to the right party
+3. clusters
+4. dynamic
