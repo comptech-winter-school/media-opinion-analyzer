@@ -13,8 +13,7 @@ The approach is tested on data from the Reddit platform.
 | webapp | streamlit web_app |
 | sBert| testing sBert: vectorization, classification, cos_sim, clustering |
 | doc2vec | testing doc2vec: vectorization, classification, cos_sim |
-| USE| testing USE: vectorization, classification, cos_sim, clustering |
-| LanguageModel.ipynb | initial sBert pipeline |
+| USE| testing USE: vectorization, classification, cos_sim |
 
 
 ## How to use
